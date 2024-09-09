@@ -12,10 +12,9 @@ jobs:
 
     services:
       mysql:
-        image: mysql
+        image: mysql:5.7
         env:
-          MYSQL_USER: 'root'
-          MYSQL_PASSWORD: '123456'
+          MYSQL_ROOT_PASSWORD: '123456'
           MYSQL_DATABASE: 'usersdb'
         ports:
           - 3306:3306
@@ -35,7 +34,7 @@ jobs:
       run: npm install
     - name: Start MySQL
       run: sudo /etc/init.d/mysql start
-    - name: Run tests
+    - name: Run Db
       run: node script_db.js   
     - name: Run tests
       run: npm test
